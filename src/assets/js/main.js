@@ -1,4 +1,4 @@
-console.log(jQuery);
+
 $(document).ready(function() {
 	var controller = new ScrollMagic.Controller();
 	$(".side-img").each(function() {
@@ -23,10 +23,10 @@ $(document).ready(function() {
 	$(".fast").each(function() {
 		var tl = new TimelineMax();
 		var child = $(this).find("img");
-		tl.to($(this), 1, { y: -180, ease: Linear.easeNone });
+		tl.to($(this), 1, { y: -100, ease: Linear.easeNone });
 		var scene = new ScrollMagic.Scene({
 			triggerElement: this.parentElement,
-			triggerHook: 0.4,
+			triggerHook: 0.1,
 			duration: "100%"
 		})
 			.setTween(tl)
@@ -46,7 +46,7 @@ $(document).ready(function() {
 		tl.to($(this), 1, { y: -200, ease: Linear.easeNone });
 		var scene = new ScrollMagic.Scene({
 			triggerElement: this.parentElement,
-			triggerHook: 0.4,
+			triggerHook: 0,
 			duration: "100%"
 		})
 			.setTween(tl)
@@ -61,7 +61,7 @@ $(document).ready(function() {
 	$(".slow").each(function() {
 		var tl = new TimelineMax();
 		var child = $(this).find("img");
-		tl.to($(this), 1, { y: -100, ease: Linear.easeNone });
+		tl.to($(this), 4, { y: -100, ease: Linear.easeNone });
 		var scene = new ScrollMagic.Scene({
 			triggerElement: this.parentElement,
 			triggerHook: 0.4,
