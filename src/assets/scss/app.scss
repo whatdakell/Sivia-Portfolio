@@ -93,9 +93,9 @@ h1{
 }
 .image img{
 	transform: scale(1);
-	transition: 400ms ease;
+	transition: 300ms ease;
 	&:hover{
-		transform:scale(1.2);
+		transform:scale(1.05);
 	}
 }
 .image{

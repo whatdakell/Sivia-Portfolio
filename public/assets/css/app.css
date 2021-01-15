@@ -443,15 +443,15 @@ h1 {
   -webkit-transform: scale(1);
       -ms-transform: scale(1);
           transform: scale(1);
-  -webkit-transition: 400ms ease;
-  -o-transition: 400ms ease;
-  transition: 400ms ease;
+  -webkit-transition: 300ms ease;
+  -o-transition: 300ms ease;
+  transition: 300ms ease;
 }
 
 .image img:hover {
-  -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .image {
