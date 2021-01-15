@@ -1,6 +1,6 @@
-var controller = new ScrollMagic.Controller();
-
+console.log(jQuery);
 $(document).ready(function() {
+	var controller = new ScrollMagic.Controller();
 	$(".side-img").each(function() {
 		var tl = new TimelineMax();
 		var child = $(this).find("img");
