@@ -10,9 +10,6 @@ $gold: #C19A5B;
 $grey: #3f3f3f;
 $cream: #e2d7cf;
 
-.hero{
-	height: 100vw;
-}
 $small: 768px;
 $meduim: (max-width: 1024px);
 
@@ -32,16 +29,24 @@ $tablet: 1024px;
 }
 
 html {
-	font-size: 100%;
-	@include tablet() {
-		font-size: 80%;
+	font-size: 14px;
+	@include tablet {
+		font-size: 12px;
 	}
 	@include small {
-		font-size: 40%;
+		font-size: 10px;
 	}
-
-
 }
+
+
+.hero{
+	height: 100vw;
+	@include small {
+		height: 100vh;
+	}
+}
+
+
 body{
 	// padding: 0 5%;
 	font-family: 'Montserrat', sans-serif;
@@ -74,7 +79,7 @@ $top-height: 8rem;
 $top-height-img: $top-height * 2.7;
 h1{
 	margin-top: $top-height;
-	font-size: 18rem;
+	font-size: 10rem;
 	color: $grey;
 	font-weight: 400;
 	@extend .center;
@@ -86,9 +91,16 @@ h1{
 	text-transform: uppercase;
 	
 }
-
+.image img{
+	transform: scale(1);
+	transition: 400ms ease;
+	&:hover{
+		transform:scale(1.2);
+	}
+}
 .image{
 	background-repeat: no-repeat;
+	overflow: hidden;
 	background-position: center center;
 }
 
@@ -108,7 +120,7 @@ img{
 .image-2{
 	width: 20vw;
 	background-size: cover;
-	top: $top-height-img * 1.5;
+	top: $top-height-img * 2;
 
 }
 .image-3{
@@ -116,7 +128,7 @@ img{
 	width: 20vw;
 	// min-height: 60vh;
 	background-size: cover;
-	top: $top-height-img * 2;
+	top: $top-height-img * 2.5;
 
 }
 .hero-images{
@@ -185,5 +197,12 @@ img{
 		@include small {
 			margin-top: 15vw;
 		}
+	}
+}
+
+
+.portfolio{
+	.hero-images{
+		position: relative;
 	}
 }
