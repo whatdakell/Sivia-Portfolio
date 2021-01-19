@@ -386,14 +386,162 @@ html {
   }
 }
 
-.hero {
-  height: 100vw;
+.left {
+  left: 0;
+  position: absolute;
 }
 
-@media (max-width: 768px) {
-  .hero {
-    height: 100vh;
+.right {
+  position: absolute;
+  right: 0;
+}
+
+.center, h1 {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  position: absolute;
+}
+
+.sunshine {
+  -webkit-animation: spin 1s forwards;
+          animation: spin 1s forwards;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+}
+
+.animate .sunshine {
+  -webkit-animation: none;
+          animation: none;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform: rotate(0deg) translate(-50%, 0);
+            transform: rotate(0deg) translate(-50%, 0);
   }
+  100% {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform: rotate(-360deg) translate(-50%, 0);
+            transform: rotate(-360deg) translate(-50%, 0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform: rotate(0deg) translate(-50%, 0);
+            transform: rotate(0deg) translate(-50%, 0);
+  }
+  100% {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform: rotate(-360deg) translate(-50%, 0);
+            transform: rotate(-360deg) translate(-50%, 0);
+  }
+}
+
+body:not(.animate) {
+  overflow: hidden;
+}
+
+body::after {
+  content: '';
+  left: 0;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  height: 100%;
+  -webkit-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+}
+
+body.animate::after {
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+body.animate .hero-heading span {
+  opacity: 0;
+}
+
+body.loaded .hero-heading:after {
+  opacity: 0;
+  -webkit-transform: translateX(40%);
+      -ms-transform: translateX(40%);
+          transform: translateX(40%);
+}
+
+body.loaded header > * {
+  opacity: 1;
+}
+
+body header > * {
+  opacity: 0;
+  -webkit-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
+body header > *:nth-child(1) {
+  -webkit-transition-delay: 0.2s;
+       -o-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+body header > *:nth-child(2) {
+  -webkit-transition-delay: 0.4s;
+       -o-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+body header > *:nth-child(3) {
+  -webkit-transition-delay: 0.65s;
+       -o-transition-delay: 0.65s;
+          transition-delay: 0.65s;
+}
+
+body .hero-heading:after {
+  content: "";
+  width: 200%;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  top: 0;
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease 2s, -webkit-transform 4s ease 300ms;
+  transition: opacity 300ms ease 2s, -webkit-transform 4s ease 300ms;
+  -o-transition: transform 4s ease 300ms, opacity 300ms ease 2s;
+  transition: transform 4s ease 300ms, opacity 300ms ease 2s;
+  transition: transform 4s ease 300ms, opacity 300ms ease 2s, -webkit-transform 4s ease 300ms;
+  -webkit-transform: translateX(-45%);
+      -ms-transform: translateX(-45%);
+          transform: translateX(-45%);
+  background: -webkit-gradient(linear, left top, right top, from(#0000), color-stop(#fff), to(#fff));
+  background: -o-linear-gradient(left, #0000, #fff, #fff);
+  background: linear-gradient(to right, #0000, #fff, #fff);
+}
+
+body .hero-heading span {
+  opacity: 1;
+  -webkit-transition: all 500ms ease-in;
+  -o-transition: all 500ms ease-in;
+  transition: all 500ms ease-in;
+}
+
+.hero {
+  position: relative;
+  height: 200vh;
+  margin-bottom: 30vh;
 }
 
 body {
@@ -405,9 +553,53 @@ p {
   line-height: 1.5;
 }
 
-.wrapper {
-  margin: 0 5%;
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: white;
+  padding: 10px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  color: #3f3f3f;
+  z-index: 10;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+
+header a {
+  color: #3f3f3f;
+}
+
+header .center, header h1 {
+  margin: 0 auto;
+}
+
+header .icon {
   height: 100%;
+  width: auto;
+}
+
+body {
+  margin-bottom: 30px;
+}
+
+.wrapper {
+  top: 0;
+  padding: 0 5%;
+  height: 100%;
+  width: 100vw;
   /* display: block; */
   min-height: 100%;
   /* box-sizing: revert; */
@@ -415,6 +607,17 @@ p {
   min-height: 100vh;
   color: #3f3f3f;
   font-weight: 100;
+  overflow: hidden;
+}
+
+.wrapper:after {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: white;
+  width: 100%;
+  height: 100%;
 }
 
 .typo-light {
@@ -428,14 +631,16 @@ p {
 h1 {
   margin-top: 8rem;
   font-size: 10rem;
-  color: #3f3f3f;
+  color: #C19A5B;
   font-weight: 400;
+  text-align: center;
   z-index: 2;
 }
 
 .headline {
   font-size: 6rem;
   font-weight: 600;
+  color: #C19A5B;
   text-transform: uppercase;
 }
 
@@ -455,65 +660,56 @@ h1 {
 }
 
 .image {
-  background-repeat: no-repeat;
   overflow: hidden;
-  background-position: center center;
 }
 
-img {
-  height: auto;
+.hero-images img {
   width: 100%;
+  height: auto;
 }
 
-.image-1 {
-  width: 40vw;
-  top: 21.6rem;
+.hero-images .image-1 {
+  width: 80%;
+  top: 15%;
 }
 
-.image-1-alt {
-  width: 10vw;
-  top: 64.8rem;
-  margin-left: 20vw;
+.hero-images .image-1-alt {
+  top: 90vh;
+  width: 40vh;
+  left: 90%;
+  -webkit-transform: translateX(-90%);
+      -ms-transform: translateX(-90%);
+          transform: translateX(-90%);
 }
 
-.image-2 {
-  width: 20vw;
-  background-size: cover;
-  top: 43.2rem;
+.hero-images .image-2 {
+  top: 70%;
+  width: 40vh;
 }
 
-.image-3 {
-  width: 20vw;
-  background-size: cover;
-  top: 54rem;
+.hero-images .image-3 {
+  width: 55vh;
+  top: 100%;
 }
 
-.h {
-  background-size: contain;
-}
-
-.left {
-  left: 0;
-  position: absolute;
-}
-
-.right {
-  position: absolute;
-  right: 0;
-}
-
-.center, h1 {
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  position: absolute;
+.portfolio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .about {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100vh;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -534,8 +730,19 @@ img {
   width: 50%;
 }
 
+@media (max-width: 768px) {
+  .about > div {
+    width: 100%;
+  }
+}
+
 .about .main-img {
   position: relative;
+}
+
+.about .main-img img {
+  width: 100%;
+  height: auto;
 }
 
 .about .main-img .sivia {
@@ -559,6 +766,53 @@ img {
   }
 }
 
-.portfolio .hero-images {
-  position: relative;
+.portfolio h2 {
+  text-align: center;
+}
+
+.portfolio .project-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.portfolio .project-images .image {
+  max-width: 80%;
+  margin-top: 30px;
+  -webkit-transform: translateX(-20%);
+      -ms-transform: translateX(-20%);
+          transform: translateX(-20%);
+  opacity: 0;
+}
+
+.portfolio .project-images .image:nth-child(even) {
+  margin-left: auto;
+  -webkit-transform: translateX(20%);
+      -ms-transform: translateX(20%);
+          transform: translateX(20%);
+}
+
+.portfolio .project-images .image.animate {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+  -webkit-transition: opacity 1s ease, -webkit-transform 400ms linear;
+  transition: opacity 1s ease, -webkit-transform 400ms linear;
+  -o-transition: opacity 1s ease, transform 400ms linear;
+  transition: opacity 1s ease, transform 400ms linear;
+  transition: opacity 1s ease, transform 400ms linear, -webkit-transform 400ms linear;
+}
+
+.portfolio .project-images img {
+  width: 100%;
+  height: auto;
 }

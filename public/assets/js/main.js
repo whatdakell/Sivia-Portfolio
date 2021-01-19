@@ -96,24 +96,46 @@
 "use strict";
 
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 $(document).ready(function () {
-	var controller = new ScrollMagic.Controller();
+	var _ref;
+
+	window.scroll(0, 0);
+
+	$('body').addClass('loaded');
+	setTimeout(function () {
+		$('body').addClass('animate');
+	}, 2000);
+	var controller = new ScrollMagic.Controller(".wrapper");
+	// new TweenMax.fromTo('body', 1, {backgroundColor: 'orange'}, {backgroundColor: 'purple'})
+	var scene = new ScrollMagic.Scene((_ref = {
+		triggerElement: ".wrapper",
+		offset: 500
+	}, _defineProperty(_ref, 'triggerElement', 0.1), _defineProperty(_ref, 'duration', "1000%"), _ref)).setTween("body", 1, { backgroundColor: "#e2d7cf", ease: Linear.easeNone }) // 
+	.setTween($(".sunshine"), 1, { rotation: 360, ease: Linear.easeNone }) // trigger a TweenMax.to tween
+	.addIndicators({ name: "1 (duration: 0)" }) // add indicators (requires plugin)
+	.addTo(controller);
+
+	$(".project-images .image").each(function () {
+		var tl = new TimelineMax();
+		var child = $(this).find("img");
+		var scene = new ScrollMagic.Scene({
+			triggerElement: this,
+			offset: -100
+		}).setClassToggle(this, 'animate').reverse(false).addTo(controller);
+	});
+
 	$(".side-img").each(function () {
 		var tl = new TimelineMax();
 		var child = $(this).find("img");
-		tl.to($(this), 1, { y: -180, ease: Linear.easeNone });
+		tl.to($(this), 1, { y: -100, ease: Linear.easeNone });
 		var scene = new ScrollMagic.Scene({
-			triggerElement: this.parentElement,
-			triggerHook: 0.4,
-			duration: "100%"
-		}).setTween(tl)
-		// .addIndicators({
-		//   colorTrigger: "black",
-		//   colorStart: "black",
-		//   colorEnd: "black",
-		//   indent: 10
-		// })
-		.addTo(controller);
+			triggerElement: this,
+			triggerHook: 1,
+			duration: "80%",
+			offset: 50
+		}).setTween(tl).addTo(controller);
 	});
 
 	$(".fast").each(function () {
@@ -121,17 +143,10 @@ $(document).ready(function () {
 		var child = $(this).find("img");
 		tl.to($(this), 1, { y: -100, ease: Linear.easeNone });
 		var scene = new ScrollMagic.Scene({
-			triggerElement: this.parentElement,
-			triggerHook: 0.1,
+			triggerElement: this,
+			triggerHook: 1,
 			duration: "100%"
-		}).setTween(tl)
-		// .addIndicators({
-		//   colorTrigger: "black",
-		//   colorStart: "black",
-		//   colorEnd: "black",
-		//   indent: 10
-		// })
-		.addTo(controller);
+		}).setTween(tl).addTo(controller);
 	});
 
 	$(".faster").each(function () {
@@ -139,34 +154,20 @@ $(document).ready(function () {
 		var child = $(this).find("img");
 		tl.to($(this), 1, { y: -200, ease: Linear.easeNone });
 		var scene = new ScrollMagic.Scene({
-			triggerElement: this.parentElement,
-			triggerHook: 0,
+			triggerElement: this,
+			triggerHook: 1,
 			duration: "100%"
-		}).setTween(tl)
-		// .addIndicators({
-		//   colorTrigger: "black",
-		//   colorStart: "black",
-		//   colorEnd: "black",
-		//   indent: 10
-		// })
-		.addTo(controller);
+		}).setTween(tl).addTo(controller);
 	});
 	$(".slow").each(function () {
 		var tl = new TimelineMax();
 		var child = $(this).find("img");
-		tl.to($(this), 4, { y: -100, ease: Linear.easeNone });
+		tl.to($(this), 1, { y: -60, ease: Linear.easeNone });
 		var scene = new ScrollMagic.Scene({
-			triggerElement: this.parentElement,
-			triggerHook: 0.4,
+			triggerElement: this,
+			triggerHook: 0.6,
 			duration: "100%"
-		}).setTween(tl)
-		// .addIndicators({
-		//   colorTrigger: "black",
-		//   colorStart: "black",
-		//   colorEnd: "black",
-		//   indent: 10
-		// })
-		.addTo(controller);
+		}).setTween(tl).addTo(controller);
 	});
 });
 
