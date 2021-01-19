@@ -99,24 +99,29 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 $(document).ready(function () {
-	var _ref;
+	var _ref, _ref2;
 
 	window.scroll(0, 0);
 
 	$('body').addClass('loaded');
 	setTimeout(function () {
 		$('body').addClass('animate');
-	}, 2000);
-	var controller = new ScrollMagic.Controller(".wrapper");
+	}, 2500);
+	var controller = new ScrollMagic.Controller();
 	// new TweenMax.fromTo('body', 1, {backgroundColor: 'orange'}, {backgroundColor: 'purple'})
-	var scene = new ScrollMagic.Scene((_ref = {
+	var scene1 = new ScrollMagic.Scene((_ref = {
 		triggerElement: ".wrapper",
 		offset: 500
-	}, _defineProperty(_ref, 'triggerElement', 0.1), _defineProperty(_ref, 'duration', "1000%"), _ref)).setTween("body", 1, { backgroundColor: "#e2d7cf", ease: Linear.easeNone }) // 
-	.setTween($(".sunshine"), 1, { rotation: 360, ease: Linear.easeNone }) // trigger a TweenMax.to tween
-	.addIndicators({ name: "1 (duration: 0)" }) // add indicators (requires plugin)
+	}, _defineProperty(_ref, 'triggerElement', 0.1), _defineProperty(_ref, 'duration', "1000%"), _ref)).setTween("body", 1, { backgroundColor: "#3f3f3f", ease: Linear.easeNone }) // 
+	// .setTween($(".sunshine"), 1, {rotation: 360, ease: Linear.easeNone}) // trigger a TweenMax.to tween
 	.addTo(controller);
-
+	var scene1 = new ScrollMagic.Scene((_ref2 = {
+		triggerElement: ".wrapper",
+		offset: 500
+	}, _defineProperty(_ref2, 'triggerElement', 0.1), _defineProperty(_ref2, 'duration', "1000%"), _ref2))
+	// .setTween("body", 1, {backgroundColor: "#e2d7cf",  ease: Linear.easeNone}) // 
+	.setTween($(".sunshine"), 1, { rotation: 360, ease: Linear.easeNone }) // trigger a TweenMax.to tween
+	.addTo(controller);
 	$(".project-images .image").each(function () {
 		var tl = new TimelineMax();
 		var child = $(this).find("img");

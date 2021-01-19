@@ -5,19 +5,27 @@ $(document).ready(function() {
 	$('body').addClass('loaded');
 	setTimeout(() => {
 		$('body').addClass('animate');
-	}, 2000);
-	var controller = new ScrollMagic.Controller(".wrapper");
+	}, 2500);
+	var controller = new ScrollMagic.Controller();
 	// new TweenMax.fromTo('body', 1, {backgroundColor: 'orange'}, {backgroundColor: 'purple'})
-	var scene = new ScrollMagic.Scene({
+	var scene1 = new ScrollMagic.Scene({
 						triggerElement: ".wrapper",
 						offset: 500,
 						triggerElement: 0.1,
 						duration: "1000%"
 					})
-					.setTween("body", 1, {backgroundColor: "#e2d7cf",  ease: Linear.easeNone}) // 
+					.setTween("body", 1, {backgroundColor: "#3f3f3f",  ease: Linear.easeNone}) // 
+					// .setTween($(".sunshine"), 1, {rotation: 360, ease: Linear.easeNone}) // trigger a TweenMax.to tween
+					.addTo(controller);
+	var scene1 = new ScrollMagic.Scene({
+						triggerElement: ".wrapper",
+						offset: 500,
+						triggerElement: 0.1,
+						duration: "1000%"
+					})
+					// .setTween("body", 1, {backgroundColor: "#e2d7cf",  ease: Linear.easeNone}) // 
 					.setTween($(".sunshine"), 1, {rotation: 360, ease: Linear.easeNone}) // trigger a TweenMax.to tween
 					.addTo(controller);
-
 	$(".project-images .image").each(function() {
 		var tl = new TimelineMax();
 		var child = $(this).find("img");

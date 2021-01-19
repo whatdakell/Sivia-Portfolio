@@ -404,47 +404,9 @@ html {
   position: absolute;
 }
 
-.sunshine {
-  -webkit-animation: spin 1s forwards;
-          animation: spin 1s forwards;
-  -webkit-transform-origin: center;
-      -ms-transform-origin: center;
-          transform-origin: center;
-}
-
 .animate .sunshine {
   -webkit-animation: none;
           animation: none;
-}
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform-origin: center;
-            transform-origin: center;
-    -webkit-transform: rotate(0deg) translate(-50%, 0);
-            transform: rotate(0deg) translate(-50%, 0);
-  }
-  100% {
-    -webkit-transform-origin: center;
-            transform-origin: center;
-    -webkit-transform: rotate(-360deg) translate(-50%, 0);
-            transform: rotate(-360deg) translate(-50%, 0);
-  }
-}
-
-@keyframes spin {
-  0% {
-    -webkit-transform-origin: center;
-            transform-origin: center;
-    -webkit-transform: rotate(0deg) translate(-50%, 0);
-            transform: rotate(0deg) translate(-50%, 0);
-  }
-  100% {
-    -webkit-transform-origin: center;
-            transform-origin: center;
-    -webkit-transform: rotate(-360deg) translate(-50%, 0);
-            transform: rotate(-360deg) translate(-50%, 0);
-  }
 }
 
 body:not(.animate) {
@@ -493,39 +455,40 @@ body header > * {
 }
 
 body header > *:nth-child(1) {
-  -webkit-transition-delay: 0.2s;
-       -o-transition-delay: 0.2s;
-          transition-delay: 0.2s;
+  -webkit-transition-delay: 0.3s;
+       -o-transition-delay: 0.3s;
+          transition-delay: 0.3s;
 }
 
 body header > *:nth-child(2) {
-  -webkit-transition-delay: 0.4s;
-       -o-transition-delay: 0.4s;
-          transition-delay: 0.4s;
+  -webkit-transition-delay: 0.5s;
+       -o-transition-delay: 0.5s;
+          transition-delay: 0.5s;
 }
 
 body header > *:nth-child(3) {
-  -webkit-transition-delay: 0.65s;
-       -o-transition-delay: 0.65s;
-          transition-delay: 0.65s;
+  -webkit-transition-delay: 0.7s;
+       -o-transition-delay: 0.7s;
+          transition-delay: 0.7s;
 }
 
 body .hero-heading:after {
   content: "";
-  width: 200%;
+  width: 250%;
   position: absolute;
   left: 0;
   height: 100%;
   top: 0;
+  background-size: 500%;
   opacity: 1;
-  -webkit-transition: opacity 300ms ease 2s, -webkit-transform 4s ease 300ms;
-  transition: opacity 300ms ease 2s, -webkit-transform 4s ease 300ms;
-  -o-transition: transform 4s ease 300ms, opacity 300ms ease 2s;
-  transition: transform 4s ease 300ms, opacity 300ms ease 2s;
-  transition: transform 4s ease 300ms, opacity 300ms ease 2s, -webkit-transform 4s ease 300ms;
-  -webkit-transform: translateX(-45%);
-      -ms-transform: translateX(-45%);
-          transform: translateX(-45%);
+  -webkit-transition: opacity 300ms ease 2s, -webkit-transform 3s ease 1s;
+  transition: opacity 300ms ease 2s, -webkit-transform 3s ease 1s;
+  -o-transition: transform 3s ease 1s, opacity 300ms ease 2s;
+  transition: transform 3s ease 1s, opacity 300ms ease 2s;
+  transition: transform 3s ease 1s, opacity 300ms ease 2s, -webkit-transform 3s ease 1s;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   background: -webkit-gradient(linear, left top, right top, from(#0000), color-stop(#fff), to(#fff));
   background: -o-linear-gradient(left, #0000, #fff, #fff);
   background: linear-gradient(to right, #0000, #fff, #fff);
